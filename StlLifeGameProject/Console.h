@@ -57,7 +57,15 @@ public:
 	void WriteLine(const char* message);
 	void WriteLine(char cmessage);
 
+	void WritePosition(int row, int col, std::string message);
+	void WritePosition(int row, int col, const char* message);
+	void WritePosition(int row, int col, char cmessage);
+
+	void CursorVisible(bool visible);
+
 	int ReadKey();
+
+	void Clear();
 };
 
 

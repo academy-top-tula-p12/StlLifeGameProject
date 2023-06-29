@@ -68,6 +68,33 @@ void Console::WriteLine(char cmessage)
 	std::cout << "\n";
 }
 
+void Console::WritePosition(int row, int col, std::string message)
+{
+	SetPosition(row, col);
+	Write(message);
+}
+
+void Console::WritePosition(int row, int col, const char* message)
+{
+	SetPosition(row, col);
+	Write(message);
+}
+
+void Console::WritePosition(int row, int col, char cmessage)
+{
+	SetPosition(row, col);
+	Write(cmessage);
+}
+
+void Console::CursorVisible(bool visible)
+{
+	CONSOLE_CURSOR_INFO info;
+
+	GetConsoleCursorInfo(descriptor, &info);
+	info.bVisible = visible;
+	SetConsoleCursorInfo(descriptor, &info);
+}
+
 int Console::ReadKey()
 {
 	/*int key = _getch();
@@ -75,4 +102,9 @@ int Console::ReadKey()
 		key = _getch();
 	return key;*/
 	return _getch();
+}
+
+void Console::Clear()
+{
+	system("cls");
 }
